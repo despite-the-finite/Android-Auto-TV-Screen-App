@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Lets the Car App Library hand us a drawing Surface on the car screen. -->
+    <uses-permission android:name="androidx.car.app.ACCESS_SURFACE" />
+    <!-- Required to use NavigationTemplate, which is the only template that exposes a Surface on Android Auto. -->
+    <uses-permission android:name="androidx.car.app.NAVIGATION_TEMPLATES" />
+    <!-- Best effort: vehicle speed so playback can pause when the car starts moving. -->
+    <uses-permission android:name="com.google.android.gms.permission.CAR_SPEED" />
+
+    <application
+        android:allowBackup="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CarScreen">
+
+        <!-- Tells Android Auto this package contains a template (Car App Library) app. -->
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+
+        <!-- Minimum Car App API level this app works with. Touch callbacks need level 2+, speed needs 3+. -->
+        <meta-data
+            android:name="androidx.car.app.minCarApiLevel"
+            android:value="1" />
+
+        <!-- Phone side: log in to streaming sites and steer the car screen. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Car side: the service Android Auto binds to. Declared as a navigation app
+             because that is the only category that receives a Surface. -->
+        <service
+            android:name=".car.CarScreenService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="androidx.car.app.CarAppService" />
+                <category android:name="androidx.car.app.category.NAVIGATION" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

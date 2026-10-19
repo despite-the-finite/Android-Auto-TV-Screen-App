@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Car Screen</string>
+    <string name="status_idle">Car screen: not connected. Open Car Screen from the Android Auto launcher.</string>
+    <string name="status_active">Car screen: connected (%1$d × %2$d)</string>
+    <string name="hint_url">Address or search</string>
+    <string name="hint_type">Text to type into the car page</string>
+    <string name="btn_go">Go</string>
+    <string name="btn_send_to_car">Send this page to car</string>
+    <string name="btn_type">Type</string>
+    <string name="btn_enter">Enter</string>
+    <string name="btn_car_back">Car back</string>
+    <string name="btn_car_reload">Car reload</string>
+    <string name="btn_car_pause">Pause</string>
+    <string name="btn_car_play">Play</string>
+    <string name="section_phone">Log in here on the phone. Cookies are shared with the car screen.</string>
+    <string name="section_car">Car screen controls</string>
+    <string name="car_action_home">Home</string>
+    <string name="car_action_back">Back</string>
+    <string name="car_action_reload">Reload</string>
+    <string name="moving_warning">Playback paused while the vehicle is moving.</string>
+</resources>
